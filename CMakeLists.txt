@@ -39,6 +39,18 @@ caffe_option(USE_LEVELDB "Build with levelDB" ON)
 caffe_option(USE_LMDB "Build with lmdb" ON)
 caffe_option(ALLOW_LMDB_NOLOCK "Allow MDB_NOLOCK when reading LMDB files (only if necessary)" OFF)
 
+# ---[ Options-kc
+option(PRINT_DATA "Print data on screen or not" OFF)
+option(DUMP_DATA "Dump data to binary or not" OFF)
+if (PRINT_DATA)
+    add_definitions(-DPRINT_DATA)
+    message(STATUS "Print data on screen")
+endif()
+if (DUMP_DATA)
+    add_definitions(-DDUMP_DATA)
+    message(STATUS "Dump data to binary")
+endif()
+
 # ---[ Dependencies
 include(cmake/Dependencies.cmake)
 
